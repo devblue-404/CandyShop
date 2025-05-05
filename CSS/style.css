@@ -1,4 +1,4 @@
-* {
+    * {
     padding: 0;
     margin: 0;
     list-style: none;
@@ -271,25 +271,27 @@ header.sticky{
     height: 60px;
     box-shadow: 0 5px 10px #D1485F;
     transition: all 0.4s ease;
-    background-color: #f1f1f1;
+    background-color: var(--my-dark-pink-text);
     opacity: 0.9;
     filter: blur(10%);
 }
 
 header.sticky ul li a{
     margin: 0;
-    padding: 5px 10px;
-    color: #D1485F;
+    padding: 5px 20px;
+    color: var(--my-light-yellow-background);
     font-weight: 500;
     transition: all 0.4s ease;
     opacity: 1;
 }
 
-header.sticky ul li a:hover{
-    color: #F2B6CC;
+header.sticky ul li:hover{
+    border: 2px dotted var(--my-light-yellow-background);
+    border-radius: 3px;
+
 }
 header.sticky ul li a:hover::before {
-    background-color: #F2B6CC;
+    background-color: var(--my-light-yellow-background);
 }
 header.sticky div.logo {
     display: none;

@@ -5,9 +5,9 @@
     --my-font-header-title: 'Chango', sans-serif;
 }
 
-@media only screen and (max-width:430px) {
+@media only screen and (max-width:460px) {
     body {
-        min-width: 430px;
+        min-width: 460px;
     }
 
     .my-button {
@@ -79,8 +79,16 @@
 
     header.sticky {
         height: 40px;
+        background-color: #f1f1f1;
     }
 
+    header.sticky nav ul li a {
+        color: #D1485F;
+        padding: 10px 20px;
+    }
+    header.sticky ul li a:hover::before {
+        background-color: #D1485F;
+    }
     header nav ul {
         display: block;
         position: fixed;
