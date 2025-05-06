@@ -1,13 +1,21 @@
 :root {
+    --my-yellow-color: #f8d65a;
+    --my-black-color: #333;
+    --my-white-color: #f1f1f1;
+    --my-red-color: #D1485F;
+    --my-text-color-yellow:#fdefde;
+    --my-text-color:#d4807a;
     --my-light-yellow-background: #f6f5d3;
     --my-light-pink-background: #daaead;
     --my-dark-pink-text: #a3514a;
-    --my-font-header-title: 'Chango', sans-serif;
+    --my-frame-color:#ca928e;
+    --my-font-header-title: 'Chango',sans-serif;
+    --my-font-text: 'DM Sans', sans-serif;
 }
 
-@media only screen and (max-width:460px) {
+@media only screen and (max-width:430px) {
     body {
-        min-width: 460px;
+        min-width: 425px;
     }
 
     .my-button {
@@ -27,7 +35,7 @@
         font-family: var(--my-font-header-title);
         text-align: center;
         text-transform: uppercase;
-        color: #f1f1f1;
+        color: var(--my-white-color);
     }
 
     .btn-pink {
@@ -79,25 +87,25 @@
 
     header.sticky {
         height: 40px;
-        background-color: #f1f1f1;
+        background-color: var(--my-white-color);
     }
 
     header.sticky nav ul li a {
-        color: #D1485F;
+        color: var(--my-red-color);
         padding: 10px 20px;
     }
     header.sticky ul li a:hover::before {
-        background-color: #D1485F;
+        background-color: var(--my-red-color);
     }
     header nav ul {
         display: block;
         position: fixed;
-        background-color: #f1f1f1;
+        background-color: var(--my-white-color);
         top: 0;
         left: -100%;
         width: 100%;
         padding-top: 20px;
-        box-shadow: 0 5px 10px #D1485F;
+        box-shadow: 0 5px 10px var(--my-red-color);
         z-index: 12;
         transition: all 0.4s ease;
         opacity: 0.9;
@@ -291,12 +299,13 @@
     }
 
     #about .about-header {
+        z-index: 10;
         height: 30%;
         position: relative;
     }
 
     #about .about-header .my-header {
-
+        
         font-size: 40px;
         line-height: 6;
     }
@@ -416,7 +425,21 @@
         bottom: 10px;
         left: 70px;
     }
-
+    .grid-container_new-product *  i.fa-heart{
+        top: 20px;
+        right: -40px;
+    
+    }
+    .grid-container_new-product *  i.fa-bookmark {
+        top: 20px;
+        right: -40px;  
+    }
+    .grid-container_new-product * .container-image:hover i.fa-heart{
+        transform: translateX(-100px) scale(1.2); 
+    }
+    .grid-container_new-product * .container-image:hover i.fa-bookmark{
+        transform: translateX(-130px) scale(1.2); 
+    }
     .grid-container_new-product>#img-shape-1 {
         width: 60px;
         height: 15px;
@@ -969,11 +992,6 @@
     }
 
     .btnHome {
-        bottom: 20px;
-        right: 20px;
-        padding: 3px 6px;
-        ;
-        font-size: 10px;
-        border-radius: 3px;
+        display: none;
     }
 }

@@ -4,9 +4,14 @@
     list-style: none;
     text-decoration: none;
     box-sizing: border-box;
+     scroll-behavior: smooth;
 }
 
 :root {
+    --my-yellow-color: #f8d65a;
+    --my-black-color: #333;
+    --my-white-color: #f1f1f1;
+    --my-red-color: #D1485F;
     --my-text-color-yellow:#fdefde;
     --my-text-color:#d4807a;
     --my-light-yellow-background: #f6f5d3;
@@ -31,7 +36,7 @@ main {
 /*====================GLOBAL====================*/
 /*====================Button UI====================*/
 .my-button {
-    background-color: #333;
+    background-color: var(--my-black-color);
     padding: 10px;
     border-radius: 30px;
     width: 200px;
@@ -55,10 +60,10 @@ main {
 }
 
 .btn-yellow::before {
-    background-color: #333;
+    background-color: var(--my-black-color);
 }
 .btn-pink::before {
-    background-color: #f1f1f1;
+    background-color: var(--my-white-color);
 }
 
 .my-button:after {
@@ -74,10 +79,10 @@ main {
     transition-delay: .3s;
 }
 .btn-yellow::after {
-    background-color: #333;
+    background-color:var(--my-black-color);
 }
 .btn-pink::after {
-    background-color: #f1f1f1;
+    background-color: var(--my-white-color);
 }
 .my-button:hover:before  {
     left: 310px;
@@ -87,7 +92,8 @@ main {
 }
 
 .my-button:hover {
-    box-shadow: 0 5px 15px 0px var(--my-dark-pink-text);
+    box-shadow: 0 5px 15px 0px var(--my-dark-pink-text),
+    -5px -5px 20px var(--my-light-yellow-background);
 }
 
 .my-button a {
@@ -95,7 +101,7 @@ main {
     font-family: var(--my-font-header-title);
     text-align: center;
     text-transform: uppercase;
-    color: #f1f1f1;
+    color: var(--my-white-color);
 }
 
 .btn-pink {
@@ -139,10 +145,94 @@ main {
     color: var(--my-light-yellow-background);
     -webkit-text-stroke: 2px var(--my-dark-pink-text);
 }
+/*===================Animation====================*/
+@keyframes twinkle {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+        filter: brightness(1);
+    }
+    50% {
+        opacity: 0.5;
+        transform: scale(1.2);
+        filter: brightness(1.5);
+    }
+}
+
+#img-medium-star, #img-medium-star-1, #img-medium-star-2, #img-small-star {
+    animation: twinkle 2s infinite ease-in-out;
+}
+@keyframes spin {
+    to {
+        transform: rotate(320deg);
+    }
+}
+@keyframes jumping {
+    0% {
+        transform: translateY(0px)rotate(0deg);
+    }
+    40% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-100px)rotate(180deg);
+    }
+    60% {
+        transform: translateY(0px) rotate(360deg);
+    }
+    100% {
+        transform: translateY(0)rotate(360deg);
+    }
+}
+
+@keyframes water {
+    0%,100% {
+        clip-path: polygon(0 30%, 18% 28%, 35% 31%, 48% 43%, 61% 57%, 79% 63%, 100% 55%, 100% 100%, 0 100%);
+    }
+    50% {
+        clip-path: polygon(0 51%, 16% 60%, 38% 60%, 55% 48%, 64% 31%, 81% 24%, 100% 25%, 100% 100%, 0 100%);
+    }
+}
+
+@keyframes slide {
+    0% {
+        transform: translateX(0);
+    }   
+    25% {
+        transform: translateX(0);     
+    }
+    30% {
+        transform: translateX(-100%);
+    }
+    50% {
+        transform: translateX(-100%);     
+    }
+    55% {
+        transform: translateX(-200%);      
+    }
+    75% {
+        transform: translateX(-200%);   
+    }
+    80% {
+        transform: translateX(-300%);   
+    }
+    100% {
+        transform: translateX(-300%); 
+    }
+}
+@keyframes paint {
+    from {
+        width: 0px;
+    }
+    to {
+        width: 10px;
+    }
+}
 /* ------------style for header------------ */
 
 header {
     width: 100%;
+
     height: 120px;
     background-color: var(--my-light-yellow-background);
     position: fixed;
@@ -250,11 +340,6 @@ div.frame #logo-text {
     transition: all 0.5s ease;
     
 }
-@keyframes spin {
-    to {
-        transform: rotate(320deg);
-    }
-}
 
 div.frame #logo-img {
     position: absolute;
@@ -269,11 +354,10 @@ header.sticky{
     top: 0;
     left: 0;
     height: 60px;
-    box-shadow: 0 5px 10px #D1485F;
+    box-shadow: 0 5px 10px var(--my-red-color);
     transition: all 0.4s ease;
     background-color: var(--my-dark-pink-text);
     opacity: 0.9;
-    filter: blur(10%);
 }
 
 header.sticky ul li a{
@@ -288,7 +372,6 @@ header.sticky ul li a{
 header.sticky ul li:hover{
     border: 2px dotted var(--my-light-yellow-background);
     border-radius: 3px;
-
 }
 header.sticky ul li a:hover::before {
     background-color: var(--my-light-yellow-background);
@@ -385,17 +468,10 @@ div.home-article > .home-article-title-large h1:nth-child(1) {
 }
 div.home-article > .home-article-title-large h1:nth-child(2) {
     color: var(--my-light-pink-background);
-    animation: animate 4s ease-in-out infinite;
+    animation: water 4s ease-in-out infinite;
 }
 
-@keyframes animate {
-    0%,100% {
-        clip-path: polygon(0 30%, 18% 28%, 35% 31%, 48% 43%, 61% 57%, 79% 63%, 100% 55%, 100% 100%, 0 100%);
-    }
-    50% {
-        clip-path: polygon(0 51%, 16% 60%, 38% 60%, 55% 48%, 64% 31%, 81% 24%, 100% 25%, 100% 100%, 0 100%);
-    }
-}
+
 
 /*====================ARTICLE TEXT BOX====================*/
 div.home-article > .home-article-box-texts {
@@ -569,28 +645,11 @@ div.home-banner .image-container{
     position: relative;
     display: inline-block;
     margin: 0;
-}
-
-@keyframes jumping {
-    0% {
-        transform: translateY(0px)rotate(0deg);
-    }
-    40% {
-        transform: translateY(0px) rotate(0deg);
-    }
-    50% {
-        transform: translateY(-100px)rotate(180deg);
-    }
-    60% {
-        transform: translateY(0px) rotate(360deg);
-    }
-    100% {
-        transform: translateY(0)rotate(360deg);
-    }
-}
-#about .about-header .my-header:hover span {
     animation: jumping 3s alternate infinite;
 }
+
+
+
 #about .about-header .my-header span:nth-child(2) {
     animation-delay: 0.1s;
 }
@@ -751,6 +810,7 @@ div.home-banner .image-container{
     position: relative;
     width: 100%;
     height: 80%;
+    overflow: hidden;
 }
 .grid-container_new-product *  img {
     position: absolute;
@@ -759,12 +819,46 @@ div.home-banner .image-container{
     object-fit: contain;
     transform: scale(1);
     transition: .4s ease;
-    overflow: hidden;
 }
 .grid-container_new-product *  img:hover {
     cursor: pointer;
     transform: scale(1.01);
     transition: .4s ease;
+}
+
+.grid-container_new-product *  i.fa-heart {
+    position: absolute;
+    color: var(--my-white-color);
+    top: 40px;
+    right: -30px;
+    cursor: pointer;
+    transform: scale(1);
+    transition: all .3s ease;
+}
+
+.grid-container_new-product *  i.fa-bookmark {
+    position: absolute;
+    color: var(--my-white-color);
+    top: 40px;
+    right: -40px;
+    cursor: pointer;
+    transform: scale(1);
+    transition: all .3s ease;
+}
+
+.grid-container_new-product *  i.fa-heart:hover {
+    color: var(--my-red-color);
+}
+.grid-container_new-product * .container-image:hover i.fa-heart{
+    transform: translateX(-40px) scale(1.2); 
+    transition: all .3s ease;
+}
+.grid-container_new-product *  i.fa-bookmark:hover {
+    color: var(--my-yellow-color);
+}
+.grid-container_new-product * .container-image:hover i.fa-bookmark{
+    transform: translateX(-90px) scale(1.2); 
+    transition: all .3s ease;
 }
 
 .grid-container_new-product * .my-button {
@@ -816,32 +910,6 @@ div.home-banner .image-container{
     height: 100%;
     display: flex;
     animation: slide 16s infinite;   
-}
-@keyframes slide {
-    0% {
-        transform: translateX(0);
-    }   
-    25% {
-        transform: translateX(0);     
-    }
-    30% {
-        transform: translateX(-100%);
-    }
-    50% {
-        transform: translateX(-100%);     
-    }
-    55% {
-        transform: translateX(-200%);      
-    }
-    75% {
-        transform: translateX(-200%);   
-    }
-    80% {
-        transform: translateX(-300%);   
-    }
-    100% {
-        transform: translateX(-300%); 
-    }
 }
 
 
@@ -1469,14 +1537,7 @@ footer .flex-container > div > ul li a:hover::before {
     transition: .5s ease;
     animation: paint 0.5s
 }
-@keyframes paint {
-    from {
-        width: 0px;
-    }
-    to {
-        width: 10px;
-    }
-}
+
 footer .flex-container > div > ul li a:hover {
     color: var(--my-dark-pink-text);
     transition: all .3s ease;
@@ -1546,7 +1607,7 @@ footer > ul {
     right: 20px;
     color: var(--my-light-yellow-background);
     background: var(--my-dark-pink-text);
-    padding: 7px 12px;;
+    padding: 7px 12px;
     font-size: 18px;
     border-radius: 6px;
     z-index: 50;
@@ -1561,5 +1622,10 @@ footer > ul {
     cursor: pointer;
     box-shadow: 0px 5px 10px 0px var(--my-dark-pink-text);
     transform: scale(1.1);
-    transition: .2s ease;
+    transition: all .2s ease;  
+    background-color: var(--my-light-yellow-background);
+
+}
+.btnHome:hover i {
+    color: var(--my-dark-pink-text);
 }
